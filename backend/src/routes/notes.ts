@@ -68,3 +68,26 @@ notesRouter.delete('/:id', async (req: Request, res: Response, next: NextFunctio
     next(err);
   }
 });
+
+// PUT /api/notes/:id
+notesRouter.put('/:id', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const { content } = req.body;
+    if (!content || typeof content !== 'string' || content.trim().length === 0) {
+      res.status(400).json({ error: 'content is required' });
+      return;
+    }
+    const result = await pool.query(
+      'UPDATE notes SET content = $1 WHERE id = $2 RETURNING id, student_id, content, created_at',
+      [content.trim(), id]
+    );
+    if (result.rowCount === 0) {
+      res.status(404).json({ error: 'Note not found' });
+      return;
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
