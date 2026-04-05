@@ -28,6 +28,10 @@ export interface Translations {
   errorLoadNotes: string;
   errorAddNote: string;
   errorDeleteNote: string;
+  errorEditNote: string;
+  editNote: string;
+  saveNote: string;
+  cancelEdit: string;
   errorGenerateSummary: string;
 }
 
@@ -60,6 +64,10 @@ const translations: Record<Lang, Translations> = {
     errorLoadNotes: 'Failed to load notes.',
     errorAddNote: 'Failed to add note.',
     errorDeleteNote: 'Failed to delete note.',
+    errorEditNote: 'Failed to save note.',
+    editNote: 'Edit note',
+    saveNote: 'Save',
+    cancelEdit: 'Cancel',
     errorGenerateSummary: 'Failed to generate summary. Please try again.',
   },
   he: {
@@ -90,6 +98,10 @@ const translations: Record<Lang, Translations> = {
     errorLoadNotes: 'שגיאה בטעינת ההערות.',
     errorAddNote: 'שגיאה בהוספת הערה.',
     errorDeleteNote: 'שגיאה במחיקת ההערה.',
+    errorEditNote: 'שגיאה בשמירת ההערה.',
+    editNote: 'ערוך הערה',
+    saveNote: 'שמור',
+    cancelEdit: 'ביטול',
     errorGenerateSummary: 'שגיאה ביצירת הסיכום. נסה שוב.',
   },
 };
