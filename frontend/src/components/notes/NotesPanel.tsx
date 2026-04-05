@@ -9,9 +9,10 @@ interface NotesPanelProps {
   error: string | null;
   onAdd: (content: string) => Promise<void>;
   onDelete: (id: number) => Promise<void>;
+  onEdit: (id: number, content: string) => Promise<void>;
 }
 
-export function NotesPanel({ notes, loading, error, onAdd, onDelete }: NotesPanelProps) {
+export function NotesPanel({ notes, loading, error, onAdd, onDelete, onEdit }: NotesPanelProps) {
   const { t } = useLanguage();
 
   return (
@@ -42,6 +43,7 @@ export function NotesPanel({ notes, loading, error, onAdd, onDelete }: NotesPane
             key={note.id}
             note={note}
             onDelete={() => onDelete(note.id)}
+            onEdit={(content) => onEdit(note.id, content)}
           />
         ))}
       </div>

@@ -10,7 +10,7 @@ import { SummaryPanel } from './components/summary/SummaryPanel';
 
 function WorkspaceContent({ student }: { student: Student | null }) {
   const { t } = useLanguage();
-  const { notes, loading, error, addNote, deleteNote } = useNotes(
+  const { notes, loading, error, addNote, deleteNote, updateNote } = useNotes(
     student?.id ?? null
   );
 
@@ -33,6 +33,7 @@ function WorkspaceContent({ student }: { student: Student | null }) {
         error={error}
         onAdd={addNote}
         onDelete={deleteNote}
+        onEdit={updateNote}
       />
       <SummaryPanel
         studentId={student.id}
