@@ -39,5 +39,10 @@ export function useNotes(studentId: number | null) {
     setNotes((prev) => prev.filter((n) => n.id !== id));
   };
 
-  return { notes, loading, error, addNote, deleteNote };
+  const updateNote = async (id: number, content: string) => {
+    const updated = await api.updateNote(id, content);
+    setNotes((prev) => prev.map((n) => (n.id === id ? updated : n)));
+  };
+
+  return { notes, loading, error, addNote, deleteNote, updateNote };
 }
