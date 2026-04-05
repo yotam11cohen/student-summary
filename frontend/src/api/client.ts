@@ -52,6 +52,14 @@ export const api = {
     );
   },
 
+  updateNote(id: number, content: string): Promise<Note> {
+    return fetch(`${BASE}/notes/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content }),
+    }).then(handleResponse<Note>);
+  },
+
   // Summary
   generateSummary(
     studentId: number,
